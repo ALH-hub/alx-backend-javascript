@@ -3,5 +3,5 @@ export default function iterateThroughObject(reportWithIterator) {
   for (const employee of reportWithIterator) {
     result += `${employee} | `;
   }
-  return result.slice(0, -3); // remove the last " | "
+  return result.slice(0, -3);
 }
