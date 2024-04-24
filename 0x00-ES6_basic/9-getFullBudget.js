@@ -5,8 +5,8 @@ export default function getFullBudgetObject(income, gdp, capita) {
 
   const fullBudget = {
     ...budget,
-    getIncomeInDollars: (inc) => `$${inc}`,
-    getIncomeInEuros: (inc) => `${inc} euros`,
+    getIncomeInDollars: (income) => `$${income}`,
+    getIncomeInEuros: (income) => `${income} euros`,
   };
 
   return fullBudget;
