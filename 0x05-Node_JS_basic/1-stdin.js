@@ -7,10 +7,15 @@ process.stdin.on('data', (data) => {
   const val = process.stdin.read();
   process.stdout.write(`Your name is: ${data}`);
   if (process.stdin.isTTY) {
-    process.exit();
+    process.stdin.end();
+    process.exit(0);
+  } else {
+    console.log('This important software is now closing\n');
   }
-   process.stdout.write('This important software is now closing\n');
-   process.exit();
+  // process.on('SIGINT', () => {
+  //   console.log('This important software is now closing\n');
+  //   return process.exit(0);
+  // });
 });
 
 //process.stdin.on('data', (data) => {
