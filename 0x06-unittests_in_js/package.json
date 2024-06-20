@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "ALX course: unittest in javaScript using mocha, chai, sinon",
 	"main": "index.js",
-	"type": "module",
 	"scripts": {
 		"test": "mocha"
 	},
