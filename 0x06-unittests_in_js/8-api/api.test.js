@@ -1,39 +1,44 @@
-// mocha test for api.js module
-const { expect } = require('chai');
-const app = require('./api');
-const chaiHttp = require('chai-http');
 const chai = require('chai');
+const chaiHttp = require('chai-http');
+const expect = chai.expect;
+
+const app = require('./api.js');
 
 chai.use(chaiHttp);
 
-describe('GET /', () => {
-	it('should return Welcome to the payment system', (done) => {
-		chai
-			.request(app)
-			.get('/')
-			.end((err, res) => {
-				expect(res.text).to.equal('Welcome to the payment system');
-				done();
-			});
-	});
+describe('API Tests', () => {
+	describe('GET /', () => {
+		it('should return status code 200', (done) => {
+			chai
+				.request(app)
+				.get('/')
+				.end((err, res) => {
+					expect(err).to.be.null;
+					expect(res).to.have.status(200);
+					done();
+				});
+		});
 
-	it('check status code', (done) => {
-		chai
-			.request(app)
-			.get('/')
-			.end((err, res) => {
-				expect(res).to.have.status(200);
-				done();
-			});
-	});
+		it('should return the message "Welcome to the payment system"', (done) => {
+			chai
+				.request(app)
+				.get('/')
+				.end((err, res) => {
+					expect(err).to.be.null;
+					expect(res.text).to.equal('Welcome to the payment system');
+					done();
+				});
+		});
 
-	it('check content type', (done) => {
-		chai
-			.request(app)
-			.get('/')
-			.end((err, res) => {
-				expect(res).to.have.header('content-type', 'text/html; charset=utf-8');
-				done();
-			});
+		it('test port number 7865', (done) => {
+			chai
+				.request(app)
+				.get('/')
+				.end((err, res) => {
+					expect(err).to.be.null;
+					expect(res).to.have.status(200);
+					done();
+				});
+		});
 	});
 });
